@@ -1,4 +1,7 @@
+// on importe mongoose
 const mongoose = require('mongoose');
+// appel au middleware pour la validation des champs de la sauce à la création
+const sauceValidation = require('../middleware/sauceValidation');
 
 // création d'un schéma de données avec les champs souhaités
 
