@@ -4,6 +4,8 @@ Ce repository est livré nu.
 
 Pour faire fonctionner l'ensemble sur votre ordinateur, vous devrez installer node sous windows puis :
 
+Dans le dossier backend : faire npm initnodemon server
+
 dans l'invité de commande, allez dans le dossier backend et faire
 
 npm install -g @angular/cli 
@@ -11,13 +13,17 @@ npm install -g nodemon
 npm install --save express
 npm install -g mongoose
  
-Installer également Mongoose unique validator - jsonwebtoken et multer dans ce même dossier Backend
+Installer également 
+Mongoose unique validator 
+jsonwebtoken 
+multer 
+Helmet
+
+dans ce même dossier Backend
 
 Pour faire fonctionner le projet, vous devez installer node-sass à part :
 npm install node-sass@4.14.1
 (attention, ne fonctionne pas avec la version 5)
-
-Dans le dossier backend : faire npm init (juste la première fois)
 
 ## Démarrage du server
 
