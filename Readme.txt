@@ -4,7 +4,7 @@ Ce repository est livré nu.
 
 Pour faire fonctionner l'ensemble sur votre ordinateur, vous devrez installer node sous windows puis :
 
-Dans le dossier backend : faire npm initnodemon server
+Dans le dossier backend : faire npm init
 
 dans l'invité de commande, allez dans le dossier backend et faire
 
