@@ -8,16 +8,19 @@ const path = require('path');
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 // sécurité
+require('dotenv').config()
 const helmet = require('helmet');
-//const nocache = require('nocache');
 
 
 // partie connexion à la base de données MongoDB avec gestion des erreurs
-mongoose.connect('mongodb+srv://Jean-Claude:cCAzIRCKMRZPYbxr@cluster0.2j6mr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+// la connection s'effectue via une variable et est stockée dans un fichier env et ceci afin de ne pas rendre le mot de passe visible
+mongoose.connect(process.env.DB_ENV, {
+  useCreateIndex: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('Connexion à MongoDB réussie !'))
+.catch(() => console.log('Connexion à MongoDB échouée !'));
 
 // Création d'une application express
 const app = express();
@@ -31,6 +34,18 @@ app.use((req, res, next) => {
     next();
   });
 
+// cross-scripting protection (helmet)
+app.use((req, res, next) => {
+  res.setHeader("X-XSS-Protection", "1; mode=block");
+  next();
+});
+
+// Désactivation de l'entête X-Powered-by en cas de défaillance d'helmet
+// Evite de pouvoir détecter les applications qui s'exécute sous express et de lancer des attaques spécifiques
+app.disable('x-powered-by');
+
+
+
 // Rendre la requete exploitable grâce à Body Parser
 // body-parser transforme le corps de la requête qui est en JSON en objet JS utilisable
 app.use(bodyParser.json());
@@ -40,5 +55,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/sauces', stuffRoutes);
 // Routes dédiées aux utilisateurs
 app.use('/api/auth', userRoutes);
+// Utilisation d'helmet
+app.use(helmet());
 // Exportation de l'application express
 module.exports = app;
