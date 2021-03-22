@@ -13,6 +13,7 @@ npm install -g nodemon
 npm install --save express
 npm install -g mongoose
 npm install dotenv
+npm install mongoose-type-email
  
 Veuillez installer également 
 Mongoose unique validator 
@@ -32,3 +33,4 @@ Invité de commande, dossier backend : nodemon server
 Invité de commande, dossier frontend : ng server
 
 puis dans votre navigateur, lancer `http://localhost:4200/`
+
