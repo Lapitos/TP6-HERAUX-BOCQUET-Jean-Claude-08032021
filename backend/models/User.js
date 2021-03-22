@@ -6,10 +6,16 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = mongoose.Schema({
 //type email requis avec vérif que l'adresse soit unique dans la DB
-    email: {type: String, required: true, unique: true}, 
+email: {
+    type: String,
+    unique: true,
+    required: [true, "Veuillez entrer votre adresse email"],
+    match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, "Veuillez entrer une adresse email correcte"]
+  },
 //type mot de passe requis
     password: {type: String, required: true}
 });
+
 // plugin pour garantir un email unique
 userSchema.plugin(uniqueValidator);
 // on exporte le schema avec le modèle User
