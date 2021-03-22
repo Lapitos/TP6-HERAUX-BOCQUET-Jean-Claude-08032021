@@ -12,8 +12,9 @@ npm install -g @angular/cli
 npm install -g nodemon 
 npm install --save express
 npm install -g mongoose
+npm install dotenv
  
-Installer également 
+Veuillez installer également 
 Mongoose unique validator 
 jsonwebtoken 
 multer 
@@ -21,7 +22,7 @@ Helmet
 
 dans ce même dossier Backend
 
-Pour faire fonctionner le projet, vous devez installer node-sass à part :
+Pour faire fonctionner le projet, vous devrez installer node-sass à part :
 npm install node-sass@4.14.1
 (attention, ne fonctionne pas avec la version 5)
 
