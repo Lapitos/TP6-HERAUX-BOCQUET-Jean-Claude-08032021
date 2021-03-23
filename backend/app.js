@@ -47,15 +47,15 @@ app.disable('x-powered-by');
 
 
 // Rendre la requete exploitable grâce à Body Parser
-// body-parser transforme le corps de la requête qui est en JSON en objet JS utilisable
+// body-parser transforme le corps de la requête en objet utilisable
 app.use(bodyParser.json());
 // Gestion de la ressource image
 app.use('/images', express.static(path.join(__dirname, 'images')));
 // Routes dédiées aux sauces
 app.use('/api/sauces', stuffRoutes);
-// Routes dédiées aux utilisateurs
-app.use('/api/auth', userRoutes);
 // Utilisation d'helmet
 app.use(helmet());
+// Routes dédiées aux utilisateurs
+app.use('/api/auth', userRoutes);
 // Exportation de l'application express
 module.exports = app;
