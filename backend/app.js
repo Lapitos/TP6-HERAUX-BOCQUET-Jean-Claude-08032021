@@ -10,6 +10,7 @@ const userRoutes = require('./routes/user');
 // sécurité
 require('dotenv').config()
 const helmet = require('helmet');
+const maskEmailsPhones = require('mask-email-phone');
 
 
 // partie connexion à la base de données MongoDB avec gestion des erreurs
