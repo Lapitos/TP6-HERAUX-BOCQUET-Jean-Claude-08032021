@@ -1,5 +1,6 @@
 // on importe Mongoose
 const mongoose = require('mongoose');
+require('mongoose-type-email');
 // Plugin qui valide le mail de façon à ce qu'il soit unique dans la BD
 // nécessite d'installer le plugin avec npm install --save mongoose-unique-validator
 const uniqueValidator = require('mongoose-unique-validator');
