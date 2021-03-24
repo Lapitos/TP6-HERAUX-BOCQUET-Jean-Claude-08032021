@@ -20,6 +20,7 @@ Mongoose unique validator
 jsonwebtoken 
 multer 
 Helmet
+Maskdata
 
 dans ce même dossier Backend
 
