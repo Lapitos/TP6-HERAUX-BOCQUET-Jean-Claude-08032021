@@ -1,9 +1,10 @@
+// On fait appel à des plugins
 // On utilise l'algorithme bcrypt pour hasher le mot de passe
 const bcrypt = require('bcrypt');
 // on utilise le package jsonwebtoken pour attribuer un token à un utilisateur
 const jwt = require('jsonwebtoken');
 // on récupère le modèle User
-const User = require('../models/User');
+const User = require('../models/user');
 
 // création d'un compte utilisateur
 
@@ -34,6 +35,7 @@ exports.login = (req, res, next) => {
 // si pas trouvé on retourne un 401 - non autorisé
             return res.status(401).json({ error: 'Utilisateur non trouvé !'});
         }
+// sinon, on compare le mot de passe avec le hash en DB
         bcrypt.compare(req.body.password, user.password)
         .then(valid => {
 // sinon, c'est bon mais le mot de passe est incorrect
@@ -46,7 +48,7 @@ exports.login = (req, res, next) => {
                 userId: user._id,
                 token: jwt.sign(
                     { userId: user._id },
-// clef de codage -- dans la vraie vie, on utilisera quelque chose de plus fort et une validité de 24h
+// clef de codage -- dans la vraie vie, on utilisera quelque chose de plus fort. Validité portée à 24h
                     'RANDOM_TOKEN_SECRET',
                     { expiresIn: '24h' }
                 )

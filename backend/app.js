@@ -5,12 +5,13 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 // On importe la route dédiée aux sauces
-const stuffRoutes = require('./routes/stuff');
+const stuffRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 // sécurité
 require('dotenv').config()
 const helmet = require('helmet');
 const maskEmailsPhones = require('mask-email-phone');
+const MaskData = require('maskdata');
 
 
 // partie connexion à la base de données MongoDB avec gestion des erreurs
